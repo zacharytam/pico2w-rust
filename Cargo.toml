@@ -14,6 +14,7 @@ embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "ma
 embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["_rp235x"] }
+smoltcp = { version = "0.12.0", features = ["proto-ipv4"] }
 
 # CYW43439 WiFi driver
 cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", package = "cyw43" }
