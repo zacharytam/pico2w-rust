@@ -32,6 +32,15 @@ defmt-rtt = { version = "1.1.0", optional = true }
 log = { version = "0.4.17", optional = true }
 panic-probe = { version = "1.0.0" }
 
+[dependencies.embassy-net]
+git = "https://github.com/embassy-rs/embassy.git"
+branch = "main"
+features = [
+    "smoltcp-proto-ipv4",
+    "smoltcp-socket-udp",
+    "smoltcp-medium-ip"
+]
+
 [features]
 # Default feature includes defmt so optional dependency is used
 default = ["defmt"]
