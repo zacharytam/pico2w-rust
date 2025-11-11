@@ -13,7 +13,7 @@ embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", branch = 
 embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-net-driver-channel = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = [
-    "rp235x",
+    "_rp235x",
     "critical-section-impl",
     "time-driver",
     "defmt",
