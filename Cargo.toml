@@ -19,7 +19,7 @@ cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", pa
 # Embedded & HAL
 cortex-m = "0.7.7"
 cortex-m-rt = "0.7.5"
-embedded-hal = { version = "1.0.0", features = ["unproven"] }
+embedded-hal = "1.0.0"
 embedded-nal = "0.9.0"
 embedded-nal-async = "0.8.0"
 futures = { version = "0.3", features = ["async-await"] }
