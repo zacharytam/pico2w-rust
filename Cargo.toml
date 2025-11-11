@@ -12,7 +12,7 @@ repository = "https://github.com/zacharytam/pico2w-rush"
 embassy-time = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
+embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["smoltcp-proto-ipv4", "smoltcp-socket-udp", "smoltcp-medium-ip"] }
 embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["_rp235x"] }
 cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", package = "cyw43" }
 
