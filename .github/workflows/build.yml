@@ -1,0 +1,30 @@
+name: Build Pico 2W Rust WiFi Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust nightly + target
+        run: |
+          rustup toolchain install nightly
+          rustup default nightly
+          rustup target add thumbv8m.main-none-eabihf
+
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y llvm-dev libclang-dev clang cmake
+
+      - name: Build firmware
+        run: cargo build --release --target thumbv8m.main-none-eabihf
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: pico2w-rust-firmware
+          path: target/thumbv8m.main-none-eabihf/release/pico2w-rush
