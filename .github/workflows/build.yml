@@ -13,5 +13,7 @@ jobs:
         with:
           components: rust-src, llvm-tools-preview
           targets: thumbv8m.main-none-eabihf
+      - name: Clean build cache
+        run: cargo clean
       - name: Build firmware
         run: cargo build --release --target thumbv8m.main-none-eabihf
