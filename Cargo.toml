@@ -2,33 +2,44 @@
 name = "pico2w-rush"
 version = "0.1.0"
 edition = "2024"
-resolver = "2"
+description = "Raspberry Pi Pico 2 W Wi-Fi example using Embassy and CYW43."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/zacharytam/pico2w-rush"
 
+# --- Features ---
+[features]
+default = ["defmt"]
+defmt = ["defmt"]
+
+# --- Dependencies ---
 [dependencies]
-# --- Embassy Core (all from same repo to avoid version conflicts) ---
+# Embassy async runtime
 embassy-executor = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-time = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-net-driver-channel = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = [
-    "_rp235x",
-    "critical-section-impl",
-    "time-driver",
-    "defmt",
-] }
-cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
+embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["proto-ipv4", "socket-udp", "socket-tcp", "medium-ethernet", "dhcpv4", "defmt"] }
+embassy-net-driver = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 
-# --- Other dependencies ---
-defmt = "0.3"
-defmt-rtt = "0.4"
-panic-probe = "0.3"
-cortex-m = "0.7"
-cortex-m-rt = "0.7"
-futures = { version = "0.3", default-features = false }
+# CYW43 Wi-Fi driver
+cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["defmt", "firmware-logs"] }
 
-[profile.release]
-opt-level = "s"
-lto = true
-codegen-units = 1
+# Embedded HAL and RP2040 support
+embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["_rp235x"] }
+rp-pac = "7.0.0"
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.5"
+
+# Utilities
+defmt = { version = "1.0.1", optional = true }
+log = { version = "0.4.28", optional = true }
+heapless = "0.8.0"
+futures = { version = "0.3", default-features = false, features = ["async-await"] }
+
+# --- Build metadata ---
+[package.metadata.embassy]
+build = [
+    {target = "thumbv8m.main-none-eabihf", features = ["defmt", "firmware-logs"]},
+]
+
+[package.metadata.docs.rs]
+features = ["defmt", "firmware-logs"]
