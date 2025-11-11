@@ -8,44 +8,39 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/zacharytam/pico2w-rush"
 
 [dependencies]
-# Embassy crates from GitHub
+# === Embassy crates from GitHub ===
 embassy-time = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["_rp235x"] }
+
+# === CYW43 Wi-Fi / Bluetooth ===
 cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", package = "cyw43" }
 
-# Embedded & HAL
+# === Embedded / HAL ===
 cortex-m = "0.7.7"
 cortex-m-rt = "0.7.5"
 embedded-hal = "1.0.0"
 embedded-nal = "0.9.0"
 embedded-nal-async = "0.8.0"
-futures = { version = "0.3", default-features = false, features = ["alloc"] }
-num_enum = { version = "0.7", default-features = false }
 heapless = "0.8"
+panic-probe = "1.0.0"
 
-# Optional / logging
+# === Futures (no_std) ===
+futures = { version = "0.3", default-features = false, features = ["alloc"] }
+
+# === Optional logging / debugging ===
 defmt = { version = "1.0.1", optional = true }
 defmt-rtt = { version = "1.1.0", optional = true }
-log = { version = "0.4.17", optional = true }
-panic-probe = { version = "1.0.0" }
 
 [features]
-# Default feature includes defmt so optional dependency is used
+# Default feature enables defmt logging
 default = ["defmt"]
 
-# Other feature groups
-defmt = ["dep:defmt", "dep:defmt-rtt"]
-log = ["dep:log"]
+# Optional features
+defmt = ["defmt", "defmt-rtt"]
 bluetooth = ["cyw43/bluetooth"]
 
-# WiFi
-# wifi = ["cyw43"]
-
-# Bluetooth (optional)
-# bluetooth = ["cyw43/bluetooth"]
-
 [build-dependencies]
-# Optional: if you need build scripts
+# None for now
