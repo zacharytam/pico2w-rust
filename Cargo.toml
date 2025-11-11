@@ -15,8 +15,6 @@ embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", branch = 
 embassy-net = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-rp = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", features = ["_rp235x"] }
 cyw43 = { git = "https://github.com/embassy-rs/embassy.git", branch = "main", package = "cyw43" }
-defmt = { version = "1.0.1", optional = true }
-defmt-rtt = { version = "1.1.0", optional = true }
 
 # Embedded & HAL
 cortex-m = "0.7.7"
@@ -29,8 +27,8 @@ num_enum = { version = "0.7", default-features = false }
 heapless = "0.8"
 
 # Optional / logging
-# defmt = { version = "1.0.1", optional = true }
-# defmt-rtt = { version = "1.1.0", optional = true }
+defmt = { version = "1.0.1", optional = true }
+defmt-rtt = { version = "1.1.0", optional = true }
 log = { version = "0.4.17", optional = true }
 panic-probe = { version = "1.0.0" }
 
