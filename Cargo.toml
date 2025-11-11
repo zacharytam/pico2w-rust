@@ -48,3 +48,10 @@ bluetooth = ["cyw43/bluetooth"]
 
 # Firmware logs from CYW43439
 firmware-logs = ["cyw43/firmware-logs"]
+
+[unstable-features]
+build-std = ["core", "alloc"]
+build-std-config = '{"target": "thumbv8m.main-none-eabihf"}'
+
+[build]
+target = "thumbv8m.main-none-eabihf" # This line is optional but helpful
