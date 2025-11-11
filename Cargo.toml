@@ -41,7 +41,7 @@ defmt = ["defmt", "defmt-rtt"]
 log = ["log"]
 
 # WiFi
-wifi = ["cyw43"]
+# wifi = ["cyw43"]
 
 # Bluetooth (optional)
 bluetooth = ["cyw43/bluetooth"]
