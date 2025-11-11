@@ -6,9 +6,12 @@ edition = "2021"
 [dependencies]
 embassy-executor = { version = "0.3", features = ["arch-cortex-m", "executor-thread"] }
 embassy-time = "0.3"
-embassy-rp = { version = "0.3", features = ["rp2350", "time-driver", "pio", "cyw43"] }
+embassy-rp = { version = "0.3", features = ["rp2350", "time-driver", "pio"] }
 embassy-net = { version = "0.3", features = ["dhcpv4", "tcp", "dhcpv4-hostname"] }
-cyw43-pio = "0.1"
+
+cyw43 = "0.1.0"
+cyw43-pio = "0.1.0"
+
 defmt = "0.3"
 defmt-rtt = "0.4"
 panic-probe = { version = "0.3", features = ["print-defmt"] }
