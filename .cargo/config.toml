@@ -1,3 +1,5 @@
+# .cargo/config.toml
+
 [unstable-features]
 build-std = ["core", "alloc"]
 
@@ -8,8 +10,6 @@ target = "thumbv8m.main-none-eabihf"
 runner = "probe-rs run --chip RP2350A"
 rustflags = [
   "-C", "link-arg=-Tlink.x",
-  # Add the needed linker argument here:
-  "-C", "link-arg=-nodefaultlibs",
+  # THIS LINE IS ESSENTIAL to fix E0152 when using -Z build-std
+  "-C", "link-arg=-nodefaultlibs", 
 ]
-
-# You can remove the separate [target.'...'.link-args] section entirely now
