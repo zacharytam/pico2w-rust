@@ -39,8 +39,8 @@ panic-probe = { version = "1.0.0" }
 default = ["defmt"]
 
 # Other feature groups
-defmt = ["defmt", "defmt-rtt"]
-log = ["log"]
+defmt = ["dep:defmt", "dep:defmt-rtt"]
+log = ["dep:log"]
 bluetooth = ["cyw43/bluetooth"]
 
 # WiFi
