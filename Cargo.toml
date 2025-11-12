@@ -8,6 +8,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/zacharytam/pico2w-rush"
 
 [dependencies]
+alloc = "0.0.0-20220802221659-f797e880e6c3"
 # Embassy crates from GitHub
 embassy-time = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
 embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
