@@ -1,7 +1,7 @@
 # .cargo/config.toml
 
 [unstable-features]
-build-std = ["core", "alloc"]
+build-std = true
 
 [build]
 target = "thumbv8m.main-none-eabihf"
